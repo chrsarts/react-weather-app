@@ -3,29 +3,43 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState();
-  const [city, setCity] = useState("");
-  const [unit, setUnit] = useState("metric");
+  const [city, setCity] = useState("cebu");
+  const [unit, setUnit] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_KEY}`;
 
-  const getWeatherData = async (e) => {
+  useEffect(() => {
+    getWeatherData();
+  }, []);
+
+  const handleKeyPress = async (e) => {
     if (e.key === "Enter") {
-      axios.get(url).then((res) => {
-        setData(res.data);
-      });
-      setCity("");
+      getWeatherData();
     }
+  };
+
+  const getWeatherData = async () => {
+    axios.get(url).then((res) => {
+      setData(res.data);
+    });
+    setCity("");
   };
 
   return (
     <div className="App">
+      <img src={require("./images/kimsan.png")} alt="MISSING" />
+      <div className="title">
+        <h3>mag</h3>
+        <h1>weather weather</h1>
+        <h3>app</h3>
+      </div>
       <div className="content">
         <div className="top">
           <input
             type="text"
             placeholder="enter city"
             value={city}
-            onKeyPress={getWeatherData}
+            onKeyPress={handleKeyPress}
             onChange={(e) => {
               setCity(e.target.value);
             }}
@@ -38,9 +52,14 @@ function App() {
                 {data.name}, {data.sys.country}
               </span>
               <h1 className="temp">{data.main.temp}°</h1>
+
               <div className="misc">
                 <div className="weather-desc">
                   <span>{data.weather[0].description}</span>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
+                    alt="weatherIcon"
+                  />
                 </div>
                 <span>feels like: {data.main.feels_like}°</span>
                 <span>humidity: {data.main.humidity}°</span>
