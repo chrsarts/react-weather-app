@@ -1,7 +1,125 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.App {
+  font-family: "Montserrat", serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(99, 139, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(99, 139, 255, 1) 0%,
+    rgba(69, 77, 187, 1) 100%
+  );
+}
+
+.content {
+  height: 90vh;
+  width: 60vw;
+}
+
+.top {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 5px;
+  text-align: center;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top h1 {
+  font-weight: 300;
+  color: white;
+}
+
+.top input {
+  font-family: inherit;
+  text-align: center;
+  width: 200px;
+  height: 25px;
+  font-size: 1em;
+  border: none;
+  outline: none;
+}
+
+.top input::placeholder {
+  opacity: 0.5;
+}
+
+.main-container {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.main h1 {
+  font-size: 5em;
+  font-weight: 300;
+}
+.misc {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.misc .weather-desc {
+  margin: 10px;
+}
+
+.misc > * {
+  margin: 3px;
+}
+
+.misc .temp-minmax {
+  display: flex;
+}
+
+.misc .temp-minmax > * {
+  margin: 10px;
+}
+
+.change-unit {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100px;
+  margin: 0 10px;
+}
+
+.change-unit > button {
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1em;
+  font-family: "Montserrat", serif;
+  transition: all 0.15s ease;
+}
+.change-unit > button:hover {
+  transform: scale(1.2);
 }
